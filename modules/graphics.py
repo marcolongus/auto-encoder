@@ -4,7 +4,7 @@ import numpy as np
 model_name = 'model-1645055008'
 
 def create_acc_loss_graph(model_name, EPOCHS, H):
-	contents = open(f"model-{H}-{EPOCHS}.log","r").read().split('\n')
+	contents = open(f"model_logs/model-{H}-{EPOCHS}.log","r").read().split('\n')
 
 	times = []
 	accuracies = []

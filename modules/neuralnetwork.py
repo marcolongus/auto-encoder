@@ -3,13 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # CUDA or CPU implementation
-if torch.cuda.is_available():
-    device = torch.device("cuda:0")
-    print(f'Running on GPU: {device}')
-    print(f'GPU count: {torch.cuda.device_count()}')
-else:
-    device = torch.device("cpu")
-    print(f'Running on CPU:{device}')
+device = torch.device("cuda:0" if torch.cuda.is_available() else 'cpu')
+print(f"Neural Network running on {device}")
 
 
 class Autoencoder(nn.Module):

@@ -53,19 +53,15 @@ def test_model(net, optimizer, rand_batch=rand_batch):
 
 def train_model(EPOCHS=1, H=512, lr=5):
     
-    learning_rate = []
-    ep = []
     net, optimizer = init_netowrk(H, lr)
 
-    with open(f"model-{H}-{EPOCHS}.log", "w", encoding="utf-8") as f:
+    with open(f"model_logs/model-{H}-{EPOCHS}.log", "w", encoding="utf-8") as f:
         
         #scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
         #scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=10 )
         
         for epoch in range(EPOCHS):
-            
             if epoch%11==0: print(f"EPOCH {epoch}.")
-            #loss_validation = 0
 
             for batch in cuda_train_set:
                 images = batch[0]
@@ -77,20 +73,8 @@ def train_model(EPOCHS=1, H=512, lr=5):
                 f.write(f"{MODEL_NAME}, {epoch}, {round(time.time(),3)}, {round(to_file[0],3)}, {round(to_file[1],3)}\n")
                 
                 #loss_validation = test_loss
-
             #scheduler.step(loss_validation)
-            #lr_step = optimizer.state_dict()['param_groups'][0]['lr'] 
-            #learning_rate.append(lr_step)
-            #ep.append(epoch)
 
-
-    #plt.xlabel('EPOCHS')
-    #plt.ylabel('Learning Rate')
-    #plt.plot(ep, learning_rate)
-    #plt.savefig(f"images/lr-{H}-{EPOCHS}.png")
-    #plt.close('all')
-    #plt.show()
-    
     return net, optimizer
 
 
