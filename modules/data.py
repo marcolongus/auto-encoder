@@ -5,10 +5,10 @@ from torchvision import datasets
 import matplotlib.pyplot as plt
 
 # Download and store data.
-def data_loader(batch_size = 10):
+def data_loader(batch_size=10):
     """Download and store data in local directory.
-       Dataset from: https://github.com/zalandoresearch/fashion-mnist/blob/master/README.md
-       return: tuple(train, test). Pytorch Tensors holding (images, target).
+    Dataset from: https://github.com/zalandoresearch/fashion-mnist/blob/master/README.md
+    return: tuple(train, test). Pytorch Tensors holding (images, target).
     """
     train = datasets.FashionMNIST(
         "FMINST data",
@@ -42,5 +42,5 @@ if __name__ == "__main__":
         for i, image in enumerate(images):
             plt.title(target[i])
             plt.imshow(image.view(28, 28))
-            #plt.show()
+            # plt.show()
         break
